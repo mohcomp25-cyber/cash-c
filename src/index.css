@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans-arabic: "IBM Plex Sans Arabic", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  --color-brand-primary: #3B82F6;
+  --color-brand-secondary: #00F5FF;
+  --color-brand-success: #10B981;
+  --color-brand-danger: #EF4444;
+  --color-brand-warning: #F59E0B;
+  
+  --color-dark-bg: #0A0A0B;
+  --color-dark-card: #151517;
+  --color-dark-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    @apply antialiased text-white/90 bg-[#0A0A0B];
+  }
+}
+
+@layer components {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .glass-card {
+    @apply bg-[#151517]/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .fintech-glow {
+    @apply relative overflow-hidden;
+  }
+  .fintech-glow::after {
+    content: "";
+    @apply absolute -top-1/2 -left-1/2 w-full h-full bg-brand-primary/10 blur-[100px] pointer-events-none;
+  }
+
+  .fintech-input {
+    @apply bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-white/20 focus:bg-white/10 focus:border-brand-primary/50 focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none;
+  }
+}
+
+/* Custom transitions for a smoother app feel */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: white;
+}

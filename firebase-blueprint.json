@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "App user profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["cashier", "supervisor"] },
+        "branchId": { "type": "string" },
+        "branchName": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Branch": {
+      "title": "Branch",
+      "description": "Restaurant branch location",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "Closing": {
+      "title": "Closing",
+      "description": "Daily cashier closing record",
+      "type": "object",
+      "properties": {
+        "cashierId": { "type": "string" },
+        "cashierName": { "type": "string" },
+        "branchId": { "type": "string" },
+        "branchName": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "cashAmount": { "type": "number" },
+        "cardAmount": { "type": "number" },
+        "expenses": { "type": "number" },
+        "expectedSales": { "type": "number" },
+        "actualTotal": { "type": "number" },
+        "difference": { "type": "number" },
+        "notes": { "type": "string" },
+        "imageUrls": { "type": "array", "items": { "type": "string" } },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["cashierId", "branchId", "date", "cashAmount", "cardAmount", "expenses", "expectedSales", "actualTotal", "difference", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Store user profiles and roles"
+    },
+    "/branches/{branchId}": {
+      "schema": "Branch",
+      "description": "Store restaurant branches"
+    },
+    "/closings/{closingId}": {
+      "schema": "Closing",
+      "description": "Store daily closing reports"
+    }
+  }
+}

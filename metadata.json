@@ -1,0 +1,8 @@
+{
+  "name": "Cashier Closing System",
+  "description": "A modern mobile-first web application for daily restaurant cashier closing and supervisor oversight.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}
